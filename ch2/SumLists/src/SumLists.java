@@ -26,7 +26,7 @@ public class SumLists {
         Node nodeD = sumListsForward(nodeA, nodeB);
 
         printLinkedList(nodeC);
-        printLinkedList(nodeD);gi
+        printLinkedList(nodeD);
     }
 
     public static Node createLinkedList(int[] a) {
