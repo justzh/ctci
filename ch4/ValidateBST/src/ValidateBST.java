@@ -1,23 +1,24 @@
 public class ValidateBST {
-    public static void main(String[] args) {
-        // TODO: Input/Output
+    public boolean isValidBST(TreeNode root) {
+        ArrayList<Integer> list = new ArrayList<>();
+        inorder(root, list);
+        
+        for (int i = 1; i < list.size(); ++i) {
+            if (list.get(i) <= list.get(i-1))
+                return false;
+        }
+        return true;
     }
-
-    public static boolean validateBST(Node node) {
+    
+    private static void inorder(TreeNode node, ArrayList<Integer> list) {
         if (node == null) {
-            return true;
+            return;
         }
-
-        boolean greaterThanLeft = true;
-        if (node.left != null) {
-            greaterThanLeft = node.val >= node.left.val;
-        }
-
-        boolean lessThanRight = true;
-        if (node.right != null) {
-            lessThanRight = node.val <= node.right.val;
-        }
-
-        return greaterThanLeft && lessThanRight && validateBST(node.left) && validateBST(node.right);
+        
+        inorder(node.left, list);
+        list.add(node.val);
+        inorder(node.right, list);
+        
+        return;
     }
 }
